@@ -1,0 +1,6 @@
+<odoo>
+    <!-- những ai đc phân quyền vào group Manager Thì sẽ đc 4 quyền còn lại thì nếu k đc phân quyền thì sẽ mặc định là chỉ xem -->
+    <record id='group_manager' model='res.groups'>
+        <field name='name'>OpenAcademy / Manager</field>
+    </record>
+</odoo>

@@ -1,0 +1,30 @@
+<odoo>
+  <data>
+    <template id="mytemplate" name="Open Academy">
+      <t t-call="website.layout">
+        <table class="table-striped table">
+          <thead style="font-size: 23px;">
+            <tr>
+              <h6>
+                <b>
+                  <th>Title</th>
+                  <th>Description</th>
+                </b>
+              </h6>
+            </tr>
+          </thead>
+          <tbody>
+            <tr t-foreach="courses" t-as="course">
+              <td>
+                <span t-esc="course.title"/>
+              </td>
+              <td>
+                <span t-esc="course.description"/>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </t>
+    </template>
+  </data>
+</odoo>

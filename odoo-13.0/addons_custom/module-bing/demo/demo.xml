@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record id='my_model_1' model='my.model'> 
+        <field name='name'>Alice</field> 
+        <field name='age'>25</field> 
+        </record>
+        <record id='my_model_2' model='my.model'> 
+        <field name='name'>FinnD</field> 
+        <field name='age'>22</field> 
+        </record>
+        <record id='my_model_3' model='my.model'> 
+        <field name='name'>Duong</field> 
+        <field name='age'>20</field> 
+        </record>
+    </data>
+</odoo>

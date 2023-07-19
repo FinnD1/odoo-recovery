@@ -1,0 +1,31 @@
+<odoo>
+        <!-- Top menu item -->
+        <menuitem id="sale_menu_root"
+            name="Sales"
+            web_icon="sale_management,static/description/icon.png"
+            active="False"
+            sequence="7"/>
+
+        <menuitem id="sale_order_menu"
+            name="Orders"
+            parent="sale_menu_root"
+            sequence="2"/>
+
+        
+        <record id="action_orders" model="ir.actions.act_window">
+            <field name="name">Sales Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+            <field name="search_view_id" ref="sale_order_view_search_inherit_sale"/>
+            <field name="context">{}</field>
+            <field name="domain">[('state', 'not in', ('draft', 'sent', 'cancel'))]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new quotation, the first step of a new sale!
+                </p><p>
+                    Once the quotation is confirmed, it becomes a sales order.<br/> You will be able to create an invoice and collect the payment.
+                </p>
+            </field>
+        </record>
+</odoo>
