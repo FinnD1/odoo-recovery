@@ -2,7 +2,7 @@
   <data>
     <template id="mytemplate" name="Open Academy">
       <t t-call="website.layout">
-        <table class="table-striped table">
+        <!-- <table class="table-striped table">
           <thead style="font-size: 23px;">
             <tr>
               <h6>
@@ -23,8 +23,40 @@
               </td>
             </tr>
           </tbody>
-        </table>
+        </table> -->
+        <div class="container">
+          <div class="row">
+            <t t-foreach="courses" t-as="course">
+              <div class="col-sm-4">
+                <div class="card m-3" style="width: 20rem;">
+                  <img src="https://image.freepik.com/free-photo/coding-man_1098-18084.jpg" class="card-img-top" alt="image"/>
+                  <div class="card-body" id="card_body">
+                    <h3 t-field = "course.title" class="card-title"/>
+                    <div class = "mt-1" id="tags">
+                      <p t-field = "course.description" class="badge bg-danger"/>
+                      <!-- <p t-field = "course.level_of_course" class="badge badge-success"/> -->
+                    </div>
+                    <!-- <p class="card-text">With <t t-esc = "course.number_of_lesson" />lessons</p> -->
+                    <a href="#" class="btn btn-primary">Start learning</a>
+                  </div>
+                </div>
+              </div>
+            </t>
+          </div>
+        </div>
       </t>
+    </template>
+
+    <template id='assets_backend' inherit_id="web.assets_backend">
+      <xpath expr='.' position='inside'>
+        <script type="text/javascript" src='openacademy/static/src/js/bold.js'></script>
+      </xpath>
+    </template>
+
+    <template id='assets_frontend' inherit_id="web.assets_frontend">
+      <xpath expr='.' position='inside'>
+        <link type="text/css" rel='stylesheet' href='openacademy/static/src/css/style.css'></link>
+      </xpath>
     </template>
   </data>
 </odoo>

@@ -1,4 +1,4 @@
-#!c:\users\admin\downloads\compressed\odoo-13.0\odoo-13.0\venv\scripts\python.exe
+#!c:\users\admin\desktop\duong\odoo-recovery\odoo-13.0\venv\scripts\python.exe
 
 # $Id: rst2xetex.py 9115 2022-07-28 17:06:24Z milde $
 # Author: Guenter Milde

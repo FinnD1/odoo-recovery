@@ -1,4 +1,4 @@
-#!c:\users\admin\downloads\compressed\odoo-13.0\odoo-13.0\venv\scripts\python.exe
+#!c:\users\admin\desktop\duong\odoo-recovery\odoo-13.0\venv\scripts\python.exe
 
 # Copyright: This module has been placed in the public domain.
 

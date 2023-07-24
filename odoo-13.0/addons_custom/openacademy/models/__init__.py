@@ -3,4 +3,3 @@
 from . import Course
 from . import Session
 from . import Partner
-from . import Wizards

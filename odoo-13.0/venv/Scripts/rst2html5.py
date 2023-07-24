@@ -1,4 +1,4 @@
-#!c:\users\admin\downloads\compressed\odoo-13.0\odoo-13.0\venv\scripts\python.exe
+#!c:\users\admin\desktop\duong\odoo-recovery\odoo-13.0\venv\scripts\python.exe
 # :Copyright: © 2015 Günter Milde.
 # :License: Released under the terms of the `2-Clause BSD license`_, in short:
 #
