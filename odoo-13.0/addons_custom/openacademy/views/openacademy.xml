@@ -20,9 +20,11 @@
             <field name='model'>openacademy.course</field>
             <field name='arch' type='xml'>
                 <form string='Course Form'>
-                    <!-- <header>
-                        <button id='btn_url' string="Action Url" name="action_url" type="object"/>
-                    </header> -->
+                    <header>
+                        <button id='action_1' string="Action" name="action" type="object"/>
+                        <button id='action_2' string="Create" name="create1" type="object"/>
+                        <button id='action_3' string="Write" name="write1" type="object"/>
+                    </header>
                     <sheet>
                         <group>
                             <field name='title'/>
@@ -78,7 +80,7 @@
                             <field name='number_of_seats'/>
                             <field name='instructor_id'/>
                             <field name='course_id'/>
-                            <field name='attendee_ids' widget="many2many_tags" options="{'color_field':'#2596be'}"/>
+                            <field name='attendee_ids' widget="many2many_tags"/>
                             <field name='active'/>
                             <field name='taken_seats' widget='progressbar'/>
                         </group>
