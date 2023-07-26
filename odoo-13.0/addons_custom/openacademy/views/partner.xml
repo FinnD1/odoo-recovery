@@ -26,7 +26,7 @@
         <!-- tao menu -->
         <menuitem id='configuration_menu' name='Configuration' parent='openacademy_menu_root'/>
 
-        <menuitem id='configuration_partner' name='Partner' parent='configuration_menu' action='openacademy_partner_action'></menuitem>
+        <menuitem id='configuration_partner' name='Partner' parent='configuration_menu' action='openacademy_partner_action'/>
     </data>
     
 </odoo>

@@ -1,0 +1,38 @@
+<odoo>
+    <template id="report_academysession_details">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <table class="table table-condensed"
+                               style="border: 3px solid black !important;">
+                            <h2>Session Details</h2>
+                            <p>This object's name is
+                                <span t-field="o.name"/>
+                            </p>
+                            <p>Start Date :
+                                <span t-field="o.start_date"/>
+                            </p>
+                            <p>Duration :
+                                <span t-field="o.duration"/>
+                            </p>
+                            <p>Seats Number :
+                                <span t-field="o.number_of_seats"/>
+                            </p>
+                            <p>Instructor :
+                                <span t-field="o.instructor_id"/>
+                            </p>
+                            <p>Course ID :
+                                <span t-field="o.course_id"/>
+                            </p>
+                            <p>Attendee :
+                                <span t-field="o.attendee_ids"/>
+                            </p>
+
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -21,7 +21,7 @@ class openacademy(models.Model):
 
     # Người chịu trahc nhiem
     responsible_id = fields.Many2one('res.users', string='Responsible', required=True)
-    session_id = fields.One2many('openacademy.session', 'course_id', string='Session')
+    session_id = fields.One2many(comodel_name='openacademy.session', inverse_name='course_id', string='Session')
 
     # @api.onchange('description')
     # def action_url(self):
@@ -60,3 +60,6 @@ class openacademy(models.Model):
         record_update = self.env['openacademy.course'].browse(8)
         if record_update.exists():
             record_update.write({'description': 'course test  bla bla'})
+# //tai sao khi minh cham cac truong den many2one thi minh dc
+# thu nhat la tai saomany2one lai luu o daatabase la interger
+# tai sao one2many lai co inverse name

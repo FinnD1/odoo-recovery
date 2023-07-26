@@ -30,8 +30,10 @@
         'views/partner.xml',
         'views/views.xml',
         'views/templates.xml',
-        'demo/demonstration.xml',
-        'demo/demonstration_session.xml',
+        # 'demo/demonstration.xml',
+        # 'demo/demonstration_session.xml',
+        'report/report.xml',
+        'report/session_details_template.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
