@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="crm_lead_inherit" model="ir.ui.view">
+        <field name="name">crm.lead.inherit</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <header>
+                <button name="import_request" string="Import Request" class="oe_highlight" type="object"/>
+            </header>
+            <field name="tag_ids" position="after">
+                <field name="sale" position="inside"/>
+            </field>
+            <field name="sale" position="after">
+                <field name="expected_revenue" position="inside"/>
+            </field>
+            <notebook position="inside">
+                <page string="Customer Requests">
+                    <field name="request_ids" readonly="1" attrs="{'readonly':[('request_ids.stage_id.name','!=','New')]}"
+                           domain="[('request_ids.stage_id.name','=','New')]"  widget="kanban"
+                           options="{'kanban_dashboard_apollo11': [('view_mode', '=', 'kanban')]}"/>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>

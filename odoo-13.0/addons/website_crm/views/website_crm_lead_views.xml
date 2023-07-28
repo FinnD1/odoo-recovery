@@ -10,6 +10,7 @@
                         attrs="{'invisible': [('visitor_page_count', '=', 0)]}">
                     <field name="visitor_page_count" widget="statinfo" string="Page views"/>
                 </button>
+
             </xpath>
         </field>
     </record>
