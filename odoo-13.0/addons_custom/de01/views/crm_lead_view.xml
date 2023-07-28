@@ -14,6 +14,9 @@
             <field name="sale" position="after">
                 <field name="expected_revenue" position="inside"/>
             </field>
+            <field name="expected_revenue" position="after">
+                <field name="import_request" position="inside"/>
+            </field>
             <notebook position="inside">
                 <page string="Customer Requests">
                     <field name="request_ids" readonly="1" attrs="{'readonly':[('request_ids.stage_id.name','!=','New')]}"

@@ -4,7 +4,6 @@ from odoo import models, api, fields
 import base64
 from odoo.modules.module import get_resource_path
 from xlrd import open_workbook
-from openerp.addons.data_im import FakeModel
 
 
 class DataImport(models.TransientModel):
@@ -25,7 +24,7 @@ class DataImport(models.TransientModel):
         for row_num in range(worksheet.nrows):
             # Lấy dữ liệu từng cột theo row
             vals = {}
-            row = worksheet.row(row_no)
+            row = worksheet.row()
 
             if row[0].value:
                 vals['name'] = row[0].value
