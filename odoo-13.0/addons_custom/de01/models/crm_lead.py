@@ -13,34 +13,7 @@ class CrmLead(models.Model):
     expected_revenue = fields.Char(string='Revenue', compute='compute_revenue')
 
     # customer_needs=fields.Char()
-    import_request=fields.Binary()
-
-    def import_file(self):
-        # Decode file
-        file_data = base64.b64decode(self.file)
-
-        # Parse Excel file
-        workbook = xlrd.open_workbook(file_contents=file_data)
-        worksheet = workbook.sheet_by_index(0)
-
-        # Lặp qua các dòng dữ liệu
-        for row_num in range(worksheet.nrows):
-            # Lấy dữ liệu từng cột theo row
-            vals = {}
-            row = worksheet.row()
-
-            if row[0].value:
-                vals['product_id'] = row[0].value_1
-                vals['opportunity_id'] = row[1].value
-                vals['date'] = row[2].value
-                vals['description'] = row[3].value
-                vals['qty'] = row[4].value
-
-            # Tạo record mới trong Odoo
-            self.env['crm.customer.request'].create({
-                'field_1': ,
-            })
-
+    import_request = fields.Binary()
 
     @api.depends('request_ids.qty')
     def total_sale(self):
@@ -57,3 +30,34 @@ class CrmLead(models.Model):
             for record in rec.request_ids:
                 total_revenue += record.qty * record.product_id.list_price
             rec.expected_revenue = total_revenue
+
+    def import_file(self):
+        # Decode file
+        file_data = base64.b64decode(self.file)
+
+        # Parse Excel file
+        workbook = xlrd.open_workbook(file_contents=file_data)
+        worksheet = workbook.sheet_by_index(0)
+
+        # Lặp qua các dòng dữ liệu
+        for row_num in range(worksheet.nrows):
+            # Lấy dữ liệu từng cột theo row
+            vals = {}
+            row = worksheet.row()
+
+            if row[0].value:
+                vals['product_id'] = row[0].value
+                vals['opportunity_id'] = row[1].value
+                vals['date'] = row[2].value
+                vals['description'] = row[3].value
+                vals['qty'] = row[4].value
+
+            # Tạo record mới trong Odoo
+            self.env['crm.customer.request'].create({
+                'product_id': vals['product_id'],
+                'opportunity_id': vals['opportunity_id'],
+                'date': vals['date'],
+                'description': vals['description'],
+                'qty': vals['qty'],
+
+            })
