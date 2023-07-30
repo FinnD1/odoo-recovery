@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="crm.crm_lead_view_form"/>
         <field name="arch" type="xml">
             <header>
-                <button name="import_request" string="Import Request" class="oe_highlight" type="object"/>
+                <button name="import_request1" string="Import Request" class="oe_highlight" type="object"/>
             </header>
             <field name="tag_ids" position="after">
                 <field name="sale" position="inside"/>

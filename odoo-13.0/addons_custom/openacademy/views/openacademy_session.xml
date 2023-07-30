@@ -1,0 +1,123 @@
+<odoo>
+    <data>
+        <!-- create tree view on session -->
+        <record id='openacademy_session_tree_view' model='ir.ui.view'>
+            <field name='name'>Session Tree</field>
+            <field name='model'>openacademy.session</field>
+            <field name='arch' type='xml'>
+                <tree string='Sessions Tree' decoration-info='duration&lt;5' decoration-danger='duration&gt;15'>
+                    <!--                    editable='top'-->
+                    <!-- editable nhận giá trị là top hoặc bottom. Làm cho giao diện dạng tree view có thể được chỉnh sửa tại chỗ (thay vì phải đi qua giao diện form view để sửa). -->
+                    <field name='name'/>
+                    <field name='start_date'/>
+                    <field name='duration'/>
+                    <field name='number_of_seats'/>
+                    <field name='instructor_id'/>
+                    <field name='course_id'/>
+                    <field name='attendee_ids'/>
+                    <field name='active'/>
+                    <field name='taken_seats' widget='progressbar'/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- create form on Session -->
+        <record id='openacademy_session_form_view' model='ir.ui.view'>
+            <field name='name'>Session Form</field>
+            <field name='model'>openacademy.session</field>
+            <field name='arch' type='xml'>
+                <form string='Sessions form'>
+                    <sheet>
+                        <group>
+                            <field name='name'/>
+                            <field name='start_date'/>
+                            <field name='duration'/>
+                            <field name='number_of_seats'/>
+                            <field name='instructor_id'/>
+                            <field name='course_id'/>
+                            <field name='attendee_ids' widget="many2many_tags"/>
+                            <field name='active'/>
+                            <field name='taken_seats' widget='progressbar'/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id='openacademy_session_calendar' model='ir.ui.view'>
+            <field name='name'>Session Calendar</field>
+            <field name='model'>openacademy.session</field>
+            <field name='arch' type='xml'>
+                <calendar string='Calendar' date_start='start_date'>
+                    <field name='name'/>
+                    <field name='start_date'/>
+                    <field name='duration'/>
+                </calendar>
+            </field>
+        </record>
+
+        <record id='openacademy_session_kanban' model='ir.ui.view'>
+            <field name='name'>Session Kanban</field>
+            <field name='model'>openacademy.session</field>
+            <field name='arch' type='xml'>
+                <kanban>
+                    <field name="course_id"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <p class="oe_kanban_global_click">
+                                    <field name="name"/>
+                                    <field name='start_date'/>
+                                    <field name='duration'/>
+                                    <field name='number_of_seats'/>
+                                    <field name='instructor_id'/>
+                                </p>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="wizard_form_view">
+            <field name="name">wizard.form</field>
+            <field name="model">openacademy.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Add Attendees">
+                    <group>
+                        <field name="session_ids"/>
+                        <field name="attendee_ids"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+<!--        <act_window id="launch_session_wizard"-->
+<!--                    name="Add Attendees"-->
+<!--                    src_model="openacademy.session"-->
+<!--                    res_model="openacademy.wizard"-->
+<!--                    view_mode="form"-->
+<!--                    target="new"-->
+<!--        />-->
+        <record id="openacademy_wizard_action" model="ir.actions.act_window">
+            <field name="name">Wizard</field>
+            <field name="res_model">openacademy.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="wizard_form_view"/>
+        </record>
+
+
+        <!-- action open session view on models -->
+        <record id="openacademy_session_action" model="ir.actions.act_window">
+            <field name="name">Session</field>
+            <field name="res_model">openacademy.session</field>
+            <field name="view_mode">tree,form,calendar,kanban</field>
+        </record>
+        <!-- menu thu 2 -->
+        <menuitem id="openacademy_menu_session" parent="openacademy_menu" name="Session" sequence="10"
+                  action="openacademy_session_action"/>
+        <menuitem id="openacademy_menu_wizard" parent="openacademy_menu" name="Wizard" sequence="10"
+                  action="openacademy_wizard_action"/>
+    </data>
+</odoo>

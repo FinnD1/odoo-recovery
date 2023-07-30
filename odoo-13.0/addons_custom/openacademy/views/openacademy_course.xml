@@ -1,0 +1,69 @@
+<odoo>
+    <data>
+        <!-- Create tree view on Course -->
+        <record id='openacademy_course_tree_view' model='ir.ui.view'>
+            <field name='name'>Courses Tree</field>
+            <field name='model'>openacademy.course</field>
+            <field name='arch' type='xml'>
+                <tree string='Course Tree'>
+                    <field name='title'/>
+                    <field name='description'/>
+                    <field name='responsible_id'/>
+                    <field name='session_id'/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- create form on Course -->
+        <record id='openacademy_course_form_view' model='ir.ui.view'>
+            <field name='name'>Courses Form</field>
+            <field name='model'>openacademy.course</field>
+            <field name='arch' type='xml'>
+                <form string='Course Form'>
+                    <header>
+                        <button id='action_1' string="Action" name="action" type="object"/>
+                        <button id='action_2' string="Create" name="create1" type="object"/>
+                        <button id='action_3' string="Write" name="write1" type="object"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name='title'/>
+                        </group>
+                        <group>
+                            <notebook>
+                                <page>
+                                    <field name='description' widget="bold_red"/>
+                                </page>
+                            </notebook>
+                        </group>
+                        <group>
+                            <field name='responsible_id'/>
+                            <field name='session_id'/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- action  open course view in models -->
+        <record model="ir.actions.act_window" id="openacademy_course_action">
+            <field name="name">Courses</field>
+            <field name="res_model">openacademy.course</field>
+            <field name="view_mode">tree,form</field>
+            <!--            <field name='context' eval='{"search_default_my_course":1}'/>-->
+        </record>
+
+
+        <!-- Top menu item -->
+        <menuitem id="openacademy_menu_root" name="OpenAcademy" sequence="10"/>
+
+        <!-- menu categories( danh sach cac menu) -->
+        <menuitem id="openacademy_menu" parent="openacademy_menu_root" name="Academy" sequence="10"/>
+        <!-- menu thu1 -->
+        <menuitem id="openacademy_menu_courses" parent="openacademy_menu" name="Courses" sequence="10"
+                  action="openacademy_course_action"/>
+
+
+    </data>
+</odoo>
