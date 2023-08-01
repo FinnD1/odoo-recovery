@@ -1,13 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record id="product_access_only_read" model='ir.rule'>
-        <field name="name">Only Read ! Disable Edit</field>
-        <field model="model_id" ref="base.model_product_product"/>
-        <field name="groups" eval="[(4, ref('sales_team.group_sale_manager'))]"/>
+    <!--    <record id="product_access_only_read" model='ir.rule'>-->
+    <!--        <field name="name">Only Read ! Disable Edit</field>-->
+    <!--        <field name="model_id" ref="base.model_product_product"/>-->
+    <!--        <field name="groups" eval="[(4, ref('sales_team.group_sale_manager'))]"/>-->
+    <!--        <field name="perm_read" eval="1"/>-->
+    <!--        <field name="perm_write" eval="0"/>-->
+    <!--        <field name="perm_create" eval="0"/>-->
+    <!--        <field name="perm_unlink" eval="0"/>-->
+    <!--        <field name="domain_force">[('state','=','cancel')]</field>-->
+    <!--    </record>-->
+    <!--    <record id="group_opportunity_managers" model="res.groups">-->
+    <!--        <field name="rules_id" eval="[(6, 0, [ref('stage_only_read')])]"/>-->
+    <!--    </record>-->
+    <record id="stage_only_read" model='ir.rule'>
+        <field name="name">Stage only "New"</field>
+        <field name="model_id" ref="model_crm_lead"/>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+        <field name="domain_force">[('stage_id.name','=','New')]</field>
+    </record>
+    <record id="stage_test" model='ir.rule'>
+        <field name="name">Stage Test"</field>
+        <field name="model_id" ref="model_crm_lead"/>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
         <field name="perm_read" eval="1"/>
         <field name="perm_write" eval="0"/>
         <field name="perm_create" eval="0"/>
         <field name="perm_unlink" eval="0"/>
-        <field name="domain_force">[('state','=','cancel')]</field>
+        <field name="domain_force">[('stage_id.name','=','Qualified')]</field>
     </record>
+
+
+    <!--    <record id="group_opportunity_managers" model="res.groups">-->
+    <!--        <field name="name">De 01/Only read</field>-->
+    <!--&lt;!&ndash;        Số 6 có nghĩa là replace. Nghĩa là thay thế toàn bộ danh sách hiện tại của thuộc tính bằng danh sách mới.&ndash;&gt;-->
+
+    <!--&lt;!&ndash;Số 0 là danh sách trống, có nghĩa là danh sách hiện tại sẽ bị xoá hoàn toàn.&ndash;&gt;-->
+    <!--    </record>-->
+
 </odoo>

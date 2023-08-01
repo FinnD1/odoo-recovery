@@ -9,6 +9,8 @@ class CRM_Lead(http.Controller):
     def create_lead(self):
         data = json.load(request.httprequest.data)
         self.env['crm.lead'].create({
+            'data':[{
 
+            }]
         })
         return "Create Lead Successful"

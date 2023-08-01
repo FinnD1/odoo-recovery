@@ -19,9 +19,10 @@
             </field>
             <notebook position="inside">
                 <page string="Customer Requests">
-                    <field name="request_ids" readonly="1" attrs="{'readonly':[('request_ids.stage_id.name','!=','New')]}"
-                           domain="[('request_ids.stage_id.name','=','New')]"  widget="kanban"
-                           options="{'kanban_dashboard_apollo11': [('view_mode', '=', 'kanban')]}"/>
+                    <field name="request_ids"/>
+<!--                    readonly="1" attrs="{'readonly':[('request_ids.stage_id','!=','New')]}"-->
+<!--                           domain="[('request_ids.stage_id','=','New')]"  widget="kanban"-->
+<!--                           options="{'kanban_dashboard_apollo11': [('view_mode', '=', 'kanban')]}-->
                 </page>
             </notebook>
         </field>
